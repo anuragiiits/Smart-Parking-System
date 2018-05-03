@@ -16,7 +16,7 @@ var exec = require('child_process').exec, child;
 child = exec('python cameraCode.py',
     function (error, stdout, stderr) {
         console.log(stdout.indexOf("Plate Num :"));
-        var ind = stdout.indexOf("Plate Num :")+12;
+        var ind = stdout.indexOf("Plate Num :")+15;
         const plate = stdout.substring(ind+7,ind+11);
         console.log(plate);
         console.log('stdout: ' + stdout);
