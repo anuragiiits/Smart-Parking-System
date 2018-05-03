@@ -1,0 +1,12 @@
+{
+  "name": "EIS",
+  "version": "1.0.0",
+  "description": "\"organisation side for EIS project\"",
+  "main": "index.js",
+  "author": "AnubhavUjjawal",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "apollo-fetch": "^0.7.0"
+  }
+}
