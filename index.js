@@ -26,6 +26,9 @@ child = exec('python cameraCode.py',
             allBookings(licensePlate:$plate){
               edges{
                 node{
+		  spot{
+			spotName
+			}
                   bookedFrom
                   bookedTill
                   bookedBy {
@@ -36,7 +39,7 @@ child = exec('python cameraCode.py',
               }
             }
           }`,
-          variables: {plate: "7890"}  //numPlate
+          variables: {plate: numPlate}  //numPlate
           }).then(res => {
           console.log(JSON.stringify(res.data));
           if(res.data["allBookings"]["edges"].length == 0)
@@ -58,7 +61,16 @@ child = exec('python cameraCode.py',
               }
             }
             if(flag==1){
-              console.log("Allowed");
+        	child = exec('python servo.py',
+    		function (error, stdout, stderr) {
+			console.log("Allowed.")
+		});
+var fs = require('fs')
+  , filename = "spot"+res.data["allBookings"]["edges"][0]["node"]["spot"]["spotName"]+".txt";
+fs.writeFile(filename,0, 'utf8', function(err, data) {
+  if (err) throw err;
+	});
+
             }
             else{
               console.log("Not Allowed");
